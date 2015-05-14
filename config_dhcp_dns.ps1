@@ -16,7 +16,7 @@ Function dhcp-v4reserve($address, $mac, $descrip) #only reserving in one scope, 
 Function dns-recorda($ipaddr, $machine) #Only one zone, so let's hard code it here
 	{
 	Write-Debug "Creating A record for $machine"
-	Add-DnsServerRecordA  -IPv4Address  $ipaddr -Name $machine -ZoneName "example.com" -CreatePtr
+	Add-DnsServerResourceRecordA  -IPv4Address  $ipaddr -Name $machine -ZoneName "example.com" -CreatePtr
 	}
 	
 # Script Starts Here
