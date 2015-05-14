@@ -11,7 +11,7 @@
 Function dhcp-v4reserve($address, $mac, $descrip) #only reserving in one scope, so let's hard code that here
 	{
 	Write-Debug "Creating Reservation for $address"
-	Add-DhcpServerv4Reservation -ScopeId 'Server Stack 10_5_4_0' -IPAddress $address -ClientId $mac -Description $descrip
+	Add-DhcpServerv4Reservation -ScopeId 10.5.4.0 -IPAddress $address -ClientId $mac -Description $descrip
 	}
 Function dns-recorda($ipaddr, $host) #Only one zone, so let's hard code it here
 	{
@@ -22,7 +22,7 @@ Function dns-recorda($ipaddr, $host) #Only one zone, so let's hard code it here
 # Script Starts Here
 # Install the DHCP Server
 Write-Debug "Installing DHCP Server with Management Tools"
-Install-WindowsFeature -Name 'DHCP Server'
+Install-WindowsFeature -Name 'DHCP'
 # Should we check it its installed first?  What happens if you run this command and its already installed?
 
 #Add the DHCP Scope
