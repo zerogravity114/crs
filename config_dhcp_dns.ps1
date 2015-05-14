@@ -38,15 +38,18 @@ dhcp-v4reserve '10.5.4.13' 'AA-BB-CC-DD-EE-A4' 'Reservation for app03.example.co
 dhcp-v4reserve '10.5.4.20' 'AA-BB-CC-DD-EE-A5' 'Reservation for db01.example.com'
 
 # Install the DNS Server
-Install-WindowsFeature -Name 'DNS Server'
+Write-Debug "Installing the DNS Feature"
+Install-WindowsFeature -Name 'DNS'
 
 # Add the example.com zone
+Write-Debug "Adding the example.com domain zone"
 Add-DnsServerPrimaryZone -Name "example.com" -ZoneFile example.com.dns
 # Add the reverse lookup zone
+Write-Debug "Adding the reverse lookup zone"
 Add-DnsServerPrimaryZone -NetworkID 10.5.4.0/24 -ZoneFile 4.5.10.in-addr.arpa.dns
 
 # Create the A records using the function
-
+Write-Debug "Creating the DNS Records"
 dns-recorda '10.5.4.10' 'cache'
 dns-recorda '10.5.4.11' 'app01'
 dns-recorda '10.5.4.12' 'app02'
