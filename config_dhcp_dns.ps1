@@ -13,10 +13,10 @@ Function dhcp-v4reserve($address, $mac, $descrip) #only reserving in one scope, 
 	Write-Debug "Creating Reservation for $address"
 	Add-DhcpServerv4Reservation -ScopeId 10.5.4.0 -IPAddress $address -ClientId $mac -Description $descrip
 	}
-Function dns-recorda($ipaddr, $host) #Only one zone, so let's hard code it here
+Function dns-recorda($ipaddr, $machine) #Only one zone, so let's hard code it here
 	{
-	Write-Debug "Creating A record for $host"
-	Add-DnsServerRecordA  -IPv4Address  $ipaddr -Name $host -ZoneName "example.com" -CreatePtr
+	Write-Debug "Creating A record for $machine"
+	Add-DnsServerRecordA  -IPv4Address  $ipaddr -Name $machine -ZoneName "example.com" -CreatePtr
 	}
 	
 # Script Starts Here
