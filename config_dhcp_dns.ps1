@@ -22,7 +22,7 @@ Function dns-recorda($ipaddr, $host) #Only one zone, so let's hard code it here
 # Script Starts Here
 # Install the DHCP Server
 Write-Debug "Installing DHCP Server with Management Tools"
-Install-WindowsFeature -Name 'DHCP Server' -IncludeMangementTools 
+Install-WindowsFeature -Name 'DHCP Server'
 # Should we check it its installed first?  What happens if you run this command and its already installed?
 
 #Add the DHCP Scope
@@ -38,7 +38,7 @@ dhcp-v4reserve '10.5.4.13' 'AA-BB-CC-DD-EE-A4' 'Reservation for app03.example.co
 dhcp-v4reserve '10.5.4.20' 'AA-BB-CC-DD-EE-A5' 'Reservation for db01.example.com'
 
 # Install the DNS Server
-Install-WindowsFeature -Name 'DNS Server' -IncludeManagementTools
+Install-WindowsFeature -Name 'DNS Server'
 
 # Add the example.com zone
 Add-DnsServerPrimaryZone -Name "example.com" -ZoneFile example.com.dns
