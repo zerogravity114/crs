@@ -36,4 +36,4 @@ sudo mkdir -p $2
 sudo mount -o rw /dev/${vgname}/${lvname} $2
 
 # Add an entry to /etc/fstab so the LVM mounts at boot time
-echo /dev/mapper/${vgname}-${lvname} $2	ext4	defaults	1 1 | sudo tee -a /etc/fstab
+echo "/dev/mapper/${vgname}-${lvname} $2	ext4	defaults	1 1" | sudo tee -a /etc/fstab
